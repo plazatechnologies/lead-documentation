@@ -44,6 +44,7 @@ Use this endpoint to create a new lead for a specific real estate. You must prov
 | intendedMoveDate | string | No | The date the lead intends to move. |
 | conversation | string | No | A URL linking to a conversation transcript with the lead. |
 | visitDate | string | No | The date the lead plans to visit the property. |
+| message | string | No | A message containing all lead info. |
 
 ## Example Request
 
@@ -60,13 +61,15 @@ Content-Type: application/json
   "phone": "999999999",
   "transactionType": "buy",
   "origin": "WhatsApp",
-  "leadSummary": "Interested in 2-bedroom apartments.",
-  "leadPreferences": "Wants a balcony and near public transport.",
+  "leadSummary": "Interessado em apartamentos de 2 quartos.",
+  "leadPreferences": "Sala ampla com varanda, em um bairro tranquilo.",
   "listingLink": "https://listing.example.com/property/ABC123",
   "cpf/cnpj": "123.456.789-00",
   "intendedMoveDate": "2025-01-15",
   "conversation": "https://useplaza.comv.br/conversations/123",
-  "visitDate": "2024-12-20-12:10:30 -03:00"
+  "visitDate": "2024-12-20-12:10:30 -03:00",
+  "message": "💼 Quem é John Doe? \nNão informado\n\n🏢 Quais são suas necessidades? \nEstá em busca de um apartamento de 2 quartos, com sala ampla e varanda, em um bairro tranquilo.\n\n📅 Data da visita: 26/02/2025\n\n*CPF/CNPJ*: 123.456.789-00\n\n🚛 Quando planeja se mudar: 01/04/2025\n\nOrigem: Facebook\n\n🏭 Imóvel : 
+              https://exemplo.com.br/imovel/1234\n\nCódigo do Imóvel: 1234\n\nPrimeiro Imóvel de Interesse: 5678\n\n💬 Ver Conversa: [Ver conversa](https://exemplo.com.br/conversa/9876)\n\nStatus do Lead: Aguardando aprovação"
 }
 ```
 
@@ -92,8 +95,8 @@ When a lead is successfully created, the response includes detailed information 
 	  "phone": "999999999",
 	  "transactionType": "buy",
 	  "origin": "WhatsApp",
-	  "leadSummary": "Interested in 2-bedroom apartments.",
-	  "leadPreferences": "Wants a balcony and near public transport.",
+	  "leadSummary": "Interessado em apartamentos de 2 quartos.",
+	  "leadPreferences": "Sala ampla com varanda, em um bairro tranquilo.",
 	  "listingLink": "https://listing.example.com/property/ABC123",
 	  "cpf/cnpj": "123.456.789-00",
 	  "intendedMoveDate": "2025-01-15",

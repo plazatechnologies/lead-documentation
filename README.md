@@ -2,7 +2,7 @@
 
 ## Overview
 
-Use this endpoint to create a new lead for a specific real estate. You must provide the required parameters and a valid authorization token.
+This documentation shows how to create a webhook to **receive our leads**. Our leads will be sent to the webhook via the payload described in the **Request Body Parameters** below. You must provide the required {{realEstateID}} and a valid authorization token to successfully receive these leads.
 
 ## Endpoint
 

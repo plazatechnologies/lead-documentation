@@ -35,7 +35,7 @@ Use this endpoint to create a new lead for a specific real estate. You must prov
 | name | string | Yes | Lead’s full name. |
 | ddd | string | Yes | The area code of the lead's phone number. |
 | phone | string | Yes | The lead’s phone number (excluding area code). |
-| transactionType | string | No | Type of transaction: `rent` or `buy`. |
+| transactionType | string | No | Type of transaction: `rent` or `sale`. |
 | origin | string | No | Source of the lead. Possible values: `WhatsApp`, `GrupoZap`, `ImovelWeb`, `ChavesNaMaoLais`, `VivaReal`. |
 | leadSummary | string | No | A short summary highlighting the lead’s key details and interests. |
 | leadPreferences | string | No | Specific property preferences indicated by the lead. |
@@ -59,7 +59,7 @@ Content-Type: application/json
   "name": "John Doe",
   "ddd": "11",
   "phone": "999999999",
-  "transactionType": "buy",
+  "transactionType": "sale",
   "origin": "WhatsApp",
   "leadSummary": "Interessado em apartamentos de 2 quartos.",
   "leadPreferences": "Sala ampla com varanda, em um bairro tranquilo.",
@@ -93,7 +93,7 @@ When a lead is successfully created, the response includes detailed information 
 	  "name": "John Doe",
 	  "ddd": "11",
 	  "phone": "999999999",
-	  "transactionType": "buy",
+	  "transactionType": "sale",
 	  "origin": "WhatsApp",
 	  "leadSummary": "Interessado em apartamentos de 2 quartos.",
 	  "leadPreferences": "Sala ampla com varanda, em um bairro tranquilo.",

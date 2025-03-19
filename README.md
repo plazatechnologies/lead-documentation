@@ -28,6 +28,8 @@ Use this endpoint to create a new lead for a specific real estate. You must prov
 
 ## Request Body Parameters
 
+#NOTE: **ALL** fields must accept all strings. E.g. Field "cpf/cnpj" can be "not mentioned" and field "visitDate" can be "as soon as possible".
+
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | clientListingId | string | No | Internal listing ID. |

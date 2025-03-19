@@ -28,7 +28,8 @@ This documentation shows how to create a webhook to **receive our leads**. Our l
 
 ## Request Body Parameters
 
-#NOTE: **ALL** fields must accept strings. E.g. The field "cpf/cnpj" can be "not mentioned" and the field "visitDate" can be "as soon as possible".
+### NOTE: **ALL** fields must accept all strings. 
+### E.G. The field *cpf/cnpj* can be "not mentioned" and the field *visitDate* can be "as soon as possible".
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |

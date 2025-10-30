@@ -2,7 +2,7 @@
 
 ## Overview
 
-This documentation shows how to create a webhook to **receive our leads**. Our leads will be sent to the webhook via the payload described in the **Request Body Parameters** below. You must provide us the required {{realEstateID}} and a valid authorization token to successfully receive these leads.
+This documentation describes how to create a webhook to **receive our leads**. Our leads will be sent to the webhook via the payload described in the **Request Body Parameters** below. You must provide us the required {{realEstateID}} and a valid authorization token to successfully receive these leads.
 
 ## Endpoint
 

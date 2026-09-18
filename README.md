@@ -2,13 +2,16 @@
 
 ## Overview
 
-This documentation describes how to create a webhook to **receive our leads**. Our leads will be sent to the webhook via the payload described in the **Request Body Parameters** below. You must provide us your webhook URL and a valid authorization token to successfully receive these leads.
+This documentation describes how to create a webhook to **receive our leads**. Our leads will be sent to the webhook via the payload described in the **Request Body Parameters** below. You must provide us the required {{realEstateID}} and a valid authorization token to successfully receive these leads.
 
 ## Endpoint
 
 **Method:** `POST`
 
-**URL:** the HTTPS endpoint you provide us (e.g. `https://your-crm.example.com/leads`).
+**Production URL:** `https://plaza.services/api/public/v1/leads/webhook/{{realEstateID}}`
+
+> Replace {{realEstateID}} with the unique identifier of the real estate.
+> 
 
 ## Headers
 
@@ -16,6 +19,12 @@ This documentation describes how to create a webhook to **receive our leads**. O
 | --- | --- | --- |
 | Content-Type | `application/json` | Indicates the request body is in JSON format. |
 | Authorization | `Bearer <YOUR_TOKEN>` | Provide a valid bearer token or agreed-upon secret. |
+
+## URL Parameters
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| realEstateID | string | Yes | The unique ID of the real estate. This must be included in the request URL. |
 
 ## Request Body Parameters
 
@@ -45,7 +54,7 @@ This documentation describes how to create a webhook to **receive our leads**. O
 ## Example Request
 
 ```bash
-POST https://your-crm.example.com/leads
+POST <https://plaza.services/api/public/v1/leads/webhook/12345>
 Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
 

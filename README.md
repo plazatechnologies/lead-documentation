@@ -1,8 +1,15 @@
-# Lead Creation Webhook Documentation
+# CRM Integration Documentation
 
 ## Overview
 
-This documentation describes how to create a webhook to **receive our leads**. Our leads will be sent to the webhook via the payload described in the **Request Body Parameters** below. You must provide us the required {{realEstateID}} and a valid authorization token to successfully receive these leads.
+This documentation describes the endpoints your CRM must provide to integrate with Plaza:
+
+1. **Lead Creation Webhook** — to **receive our leads**. Our leads will be sent to the webhook via the payload described in the **Request Body Parameters** below.
+2. **Realtor Resolver** — to tell us which realtor is already assisting a client, so the conversation is handed to that realtor. See [Realtor Resolver Endpoint](#realtor-resolver-endpoint).
+
+You must provide us the required {{realEstateID}} and a valid authorization token to successfully integrate.
+
+# Lead Creation Webhook
 
 ## Endpoint
 
@@ -135,3 +142,68 @@ This response is returned when the request fails due to incorrect input or missi
   ]
 }
 ```
+
+# Realtor Resolver Endpoint
+
+When a client contacts us, Plaza calls this endpoint **before** assigning a realtor. If the client already has a realtor assisting them in your CRM, we hand the conversation to that realtor, so returning clients keep the same realtor. If no realtor is returned, Plaza assigns one following the real estate's own distribution rules.
+
+This endpoint is optional. It is only needed if you want the realtor assignment to follow your CRM.
+
+## Endpoint
+
+**Method:** `GET`
+
+**Production URL:** `https://plaza.services/api/public/v1/leads/realtor/{{realEstateID}}`
+
+> Replace {{realEstateID}} with the unique identifier of the real estate.
+
+## Headers
+
+| Header | Value | Description |
+| --- | --- | --- |
+| Authorization | `Bearer <YOUR_TOKEN>` | Same token used for the Lead Creation Webhook. |
+
+## Query Parameters
+
+| Parameter | Type | Required | Description |
+| --- | --- | --- | --- |
+| phone | string | Yes | The client's phone number, digits only, including country and area code (e.g. `5511999999999`). |
+| transactionType | string | No | Type of transaction: `rent` or `sale`. Use it if your CRM keeps a different realtor per transaction type. |
+
+## Example Request
+
+```bash
+GET <https://plaza.services/api/public/v1/leads/realtor/12345?phone=5511999999999&transactionType=rent>
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+## Responses
+
+### 200 OK — realtor found
+
+```json
+{
+  "realtorId": "4521",
+  "realtorEmail": "realtor@example.com"
+}
+```
+
+| Field | Type | Required | Description |
+| --- | --- | --- | --- |
+| realtorId | string | Yes | ID, in your system, of the realtor assisting the client. The same ID used in the `realtorId` field of the Lead Creation Webhook. |
+| realtorEmail | string | No | The realtor's email. Used to identify the realtor when the ID is not recognized. |
+
+### 200 OK — no realtor
+
+```json
+{
+  "realtorId": null
+}
+```
+
+Return this when the client is unknown, has no open service, or the realtor is no longer active. Plaza will then assign a realtor following the real estate's distribution rules.
+
+### Rules
+
+- Only return a realtor who is **active** and **currently assisting** this client.
+- Respond within **5 seconds**. If the endpoint times out or returns an error, Plaza assigns a realtor using the real estate's distribution rules.

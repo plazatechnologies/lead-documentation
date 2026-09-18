@@ -206,4 +206,4 @@ Return this when the client is unknown, has no open service, or the realtor is n
 ### Rules
 
 - Only return a realtor who is **active** and **currently assisting** this client.
-- Respond within **5 seconds**. If the endpoint times out or returns an error, Plaza assigns a realtor using the real estate's distribution rules.
+- If the endpoint is unavailable or returns an error, Plaza assigns a realtor using the real estate's distribution rules.

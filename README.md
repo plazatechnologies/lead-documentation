@@ -15,10 +15,11 @@ You must provide us the required {{realEstateID}} and a valid authorization toke
 
 **Method:** `POST`
 
-**Production URL:** `https://plaza.services/api/public/v1/leads/webhook/{{realEstateID}}`
+**URL (example):** `https://api.your-crm.com/plaza/leads/webhook/{{realEstateID}}`
 
+> This endpoint is hosted by **your CRM**: Plaza sends the lead, your CRM receives it. The URL above is only an example; use any format that identifies the integration in your system.
+>
 > Replace {{realEstateID}} with the unique identifier of the real estate.
-> 
 
 ## Headers
 
@@ -61,7 +62,7 @@ You must provide us the required {{realEstateID}} and a valid authorization toke
 ## Example Request
 
 ```bash
-POST <https://plaza.services/api/public/v1/leads/webhook/12345>
+POST <https://api.your-crm.com/plaza/leads/webhook/12345>
 Authorization: Bearer YOUR_ACCESS_TOKEN
 Content-Type: application/json
 
@@ -153,8 +154,10 @@ This endpoint is optional. It is only needed if you want the realtor assignment 
 
 **Method:** `GET`
 
-**Production URL:** `https://plaza.services/api/public/v1/leads/realtor/{{realEstateID}}`
+**URL (example):** `https://api.your-crm.com/plaza/leads/realtor/{{realEstateID}}`
 
+> Like the Lead Creation Webhook, this endpoint is hosted by your CRM; the URL is only an example.
+>
 > Replace {{realEstateID}} with the unique identifier of the real estate.
 
 ## Headers
@@ -173,7 +176,7 @@ This endpoint is optional. It is only needed if you want the realtor assignment 
 ## Example Request
 
 ```bash
-GET <https://plaza.services/api/public/v1/leads/realtor/12345?phone=5511999999999&transactionType=rent>
+GET <https://api.your-crm.com/plaza/leads/realtor/12345?phone=5511999999999&transactionType=rent>
 Authorization: Bearer YOUR_ACCESS_TOKEN
 ```
 
